@@ -1,0 +1,27 @@
+@import "../../App.scss";
+
+.Form{
+    
+    .FormOptions{
+        display:grid;
+        grid-template-columns: 4fr 1fr;
+        margin:10px;
+        button {
+            max-width: 40px;
+            max-height: 40px;
+            @include link-body;
+            background-color: white;
+            border-radius: 0.5em;
+            border: 3px solid rgb(243, 73, 54);
+            color: rgb(243, 73, 54);
+            margin-right: 0px;
+            display: inline-block;
+            padding: 0.1em 0.1em;
+            text-decoration: none;
+          }
+          button:hover {
+            background-color: rgb(243, 73, 54);
+            color: white;
+          }
+    }
+}

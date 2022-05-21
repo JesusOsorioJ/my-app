@@ -1,0 +1,16 @@
+@import "../../App.scss";
+
+.Form1{
+    .Form1-Container{
+        border: solid 1px black;
+        border-radius: 30px;
+        width: 50%;
+        margin:auto;
+        padding:40px;
+
+    }
+    .titleEdit{
+        display:grid;
+        grid-template-columns: 4fr 1fr;
+    }
+}

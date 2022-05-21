@@ -1,0 +1,57 @@
+@import "../../App.scss";
+
+.FormName {
+  max-width: 750px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border-radius: 20px;
+  background-color: white;
+  border: solid 1px $blue;
+  margin: 50px;
+  padding: 30px;
+  .titulo_FormName {@include text-big-title;}
+      .texto_FormName {
+          @include text-body;
+          margin-bottom: 30px;
+        }
+
+  input,
+  select {
+    min-width: 312px;
+    margin-left: 80px;
+    margin-right: 80px;
+    display: block;
+    @include text-body;
+    width: 60%;
+    height: 44px;
+    display: flex;
+    border: 1px solid $blue;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    padding: 0.25em 0.5em;
+  }
+
+  .button_flex {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  button {
+    max-width: 120px;
+    max-height: 60px;
+    @include link-body;
+    background-color: white;
+    border-radius: 0.5em;
+    border: 3px solid rgb(54, 88, 243);
+    color: rgb(54, 88, 243);
+    margin-right: 0px;
+    display: inline-block;
+    padding: 0.25em 0.75em;
+    text-decoration: none;
+  }
+  button:hover {
+    background-color: rgb(54, 88, 243);
+    color: white;
+  }
+}

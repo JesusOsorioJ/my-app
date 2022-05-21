@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Gothic&family=Open+Sans:wght@300;400&display=swap');
+
+$full-height-without-header: calc(100vh - 120px);
+$blue: #18A0FB;
+$light-blue: #C0E4EA;
+$dark-purple: #483786;
+$purple: #5956E9;
+$black: #000000;
+$white: #FFFFFF;
+$dark-grey: #4B4B4B;
+$light-grey: #A6C1DE;
+$letter-spacing: -0.02em;
+
+body {
+  margin: 0
+}
+
+@mixin text-big-title {
+  font-family: 'League Gothic', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 64px;
+  line-height: 90px;
+  letter-spacing: 0.02em;
+}
+@mixin text-title {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+  line-height: 65px;
+  letter-spacing: $letter-spacing;
+}
+@mixin text-title-bold {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 54px;
+  letter-spacing: 0.02em;
+}
+@mixin text-sub-title {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 32px;
+  line-height: 44px;
+  letter-spacing: -0.015em;
+}
+@mixin text-inline-title {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 33px;
+  letter-spacing: -0.015em;
+}
+@mixin text-body {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: -0.015em;
+}
+@mixin link-big-title {
+  font-family: 'League Gothic';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 80px;
+  line-height: 97px;
+  letter-spacing: 0.02em;
+}
+@mixin link-title {
+  font-family: 'League Gothic';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+  line-height: 58px;
+  letter-spacing: 0.02em;
+}
+@mixin link-sub-title {
+  font-family: 'League Gothic';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 32px;
+  line-height: 39px;
+  letter-spacing: 0.02em;
+}
+@mixin link-inline-title {
+  font-family: 'League Gothic';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 29px;
+  letter-spacing: 0.02em;
+}
+@mixin link-body {
+  font-family: 'League Gothic';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+}

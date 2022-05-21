@@ -1,0 +1,100 @@
+@import '../../App.scss';
+
+.footer--title {
+    @include text-inline-title;
+    color: $light-blue;
+    margin: 0;
+}
+
+.footer--body {
+    @include text-body;
+    color: $light-blue;
+    margin: 0;
+}
+
+.footer {
+    align-items: center;
+    background-color: $dark-grey;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+}
+
+.footer__logo {
+    width: 320px;
+}
+
+.footer__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 0 0 .75rem 0;
+}
+
+.contact__body, .hq__body {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__copyright {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1.25rem 0;
+    width: 60%;
+}
+
+.footer__copyright > .footer--body {
+    text-align: center;
+}
+
+.copyright__social-media {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.75rem;
+    justify-content: space-around;
+    width: 90%;
+}
+
+.copyright__social-content {
+    @include text-inline-title;
+    text-align: center;
+    color: $light-blue;
+    margin: 0;
+}
+
+.social-content__icon {
+    align-items: center;
+    display: flex;
+    gap: .25em;
+    justify-content: center;
+}
+
+.copyright__social-media img {
+    height: 45px;
+    padding: 0;
+    width: 45px;
+}
+
+@media (min-width: 768px) {
+    .footer__container {
+        flex-direction: row;
+        gap: 2rem;
+        margin: 0 0 1.25em 0;
+    }
+}
+
+@media (min-width: 1024px) {
+    .footer__container {
+        gap: 3rem;
+    }
+
+    .contact__body, .hq__body {
+        flex-direction: row;
+        gap: 2.5rem;
+    }
+}
