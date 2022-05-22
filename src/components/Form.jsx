@@ -1,11 +1,15 @@
 import { useState } from "react";
+import { useParams } from 'react-router-dom';
 import {  updateDocument, randomString } from '../utils/crud'
 import "./scss/Form.scss";
 
-function Form({ setValue, value, setQuestion, question, id, form, setForm, editId, setEditId}) {
-  
+function Form({ setValue, value, setQuestion, question, 
+  id, form, setForm, editId, setEditId}) {
+ 
   const [input, setInput] = useState({ value: "" });
-  const [ error, setError ] = useState()
+  const [ error, setError ] = useState();
+  const [ freeQuestion, setFreeQuestion] =  useState(false);
+  const [ freeQuestion1, setFreeQuestion1] =  useState(false);
 
   function HandlerOnClick(e) {
     e.preventDefault();
@@ -22,8 +26,9 @@ function Form({ setValue, value, setQuestion, question, id, form, setForm, editI
 
   function HandlerForm() {
     let question1;
+    
     const trueanswer = form.filter(item=>(item.correct===true))
-    if (trueanswer.length === 0) {
+    if (trueanswer.length === 0 && !freeQuestion) {
       return setError("Debe tener al menos una opcion marcada")
     }
     if (editId !== null){
@@ -32,11 +37,24 @@ function Form({ setValue, value, setQuestion, question, id, form, setForm, editI
     } else{
       question1 = {data:[...question, { name: value, id:randomString(20), options: [...form] }]}
     } 
+    console.log("question1.data", question1.data)
     setQuestion(question1.data);
-    updateDocument('form', id, question1).then(document=>(document))
+    updateDocument('form', id, question1).then(document=>(document));
+    let mat = []
+    question1.data.map(item=> mat.push({ name: item.name, id: item.id, status:false }))
+    console.log("mat = []", mat,   )
+    console.log("idActive", id)
+    updateDocument('formActive', id , {data:[...mat]}).then(document=>(document))
     setValue();
     setForm([]);
     setEditId(null)
+  }
+
+  function HandlerFreeQuestion(){
+    setFreeQuestion(true);
+  }
+  function HandlerFreeQuestion1(){
+    setFreeQuestion1(true);
   }
 
   function HandlerEliminate(e) {
@@ -81,6 +99,29 @@ function Form({ setValue, value, setQuestion, question, id, form, setForm, editI
           
         </div>
       ))}
+
+      
+      {freeQuestion?
+      <>
+      {!freeQuestion1?
+      <>
+      <h3>Desea añadir una respuesta comparativa</h3>
+      <button type="button" onClick={HandlerForm}>Enviar formulario </button>
+      <button type="button" onClick={HandlerFreeQuestion1}>Añadir respuesta comparativa </button>
+      </>
+      :
+      <>
+      <textarea onChange={HandlerOnChange} ></textarea>
+      <button type="button" onClick={HandlerForm}>Enviar respuesta</button>
+      </>
+      
+      }
+      </>
+     :
+     <>
+      {(form.length===0)&&
+      (<button type="button" onClick={HandlerFreeQuestion} value="FreeQuestion">Agregar pregunta con Input libre</button>)
+      }
       <form onSubmit={HandlerOnClick}>
         <input
           onChange={HandlerOnChange}
@@ -94,6 +135,8 @@ function Form({ setValue, value, setQuestion, question, id, form, setForm, editI
       <button type="button" onClick={HandlerForm}>
         Agregar Formulario
       </button>
+    </>
+     }
     </div>
   );
 }

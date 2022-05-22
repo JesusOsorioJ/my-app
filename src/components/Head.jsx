@@ -8,13 +8,15 @@ import "./scss/Head.scss"
 
 
 function Head() {
+  // const [idformActive, SetIdFormActive] = useState();
   const {id, name} = useParams();
+  console.log("idhola", id)
   const [titleName, setTitleName] = useState((id==="0"));
 
   return (
     <div className="Head">
       {titleName ? 
-      (<FormName setTitleName={setTitleName} name={name} id={id}/>)
+      (<FormName setTitleName={setTitleName} name={name} id={id} />)
       :
       (
         <>
@@ -24,8 +26,8 @@ function Head() {
             Cambiar
           </button>
         </div>
+          {/* <Form1 id={id} idformActive={idformActive} /> */}
           <Form1 id={id} />
-          {/* <FormQuestion id={id} /> */}
         </>
       )
     }

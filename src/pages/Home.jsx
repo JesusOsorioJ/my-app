@@ -1,6 +1,7 @@
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Head from '../components/Head';
+import FormTeacher from '../components/FormTeacher';
 import {  getCollection, addDocument, onSnapshotData } from '../utils/crud'
 
 import { useEffect, useState } from 'react';

@@ -1,5 +1,6 @@
 import { collection, query, where, 
-    addDoc, getDocs, getDoc, doc, onSnapshot, updateDoc  } from 'firebase/firestore';
+    addDoc, getDocs, getDoc, doc, onSnapshot, updateDoc,
+    setDoc  } from 'firebase/firestore';
 import { db } from '../utils/firebase';
 
 export async function getAllCollection( collectionName) {
@@ -10,11 +11,19 @@ export async function getAllCollection( collectionName) {
     });
     return docList;
 }
+// const citiesRef = collection(db, "formStudent");
+//   await setDoc(doc(citiesRef, "Hola mundo"), {})
 
 export async function addDocument(collectionName, data){
     const docRef = await addDoc(collection(db, collectionName), data);
     const docSnap = await getDoc(docRef);
     return { id: docRef.id, ...docSnap.data() };
+}
+
+export async function addOneDocument(collectionName, id, data){
+    const docRef = collection(db, collectionName);
+    const docSnap = await setDoc(doc(docRef, id), data)
+    return docSnap;
 }
 
 export async function updateDocument(collectionName, id, data){
@@ -32,6 +41,19 @@ export function getCollection(collectionName, id){
 export function getIdCollection(collectionName, id){
     return doc(db, collectionName,id);
  }
+
+
+export async function getOneCollection(collectionName, id) {
+  const docRef = doc(db, collectionName, id );
+  const docSnap = await getDoc(docRef);
+    return docSnap.data()
+}
+
+export async function getOneCollectionForParams(collectionName, params, valueparams) {
+    const docRef = query(collection(db, collectionName), where("idForm", "==", valueparams));
+    const docSnap = await getDoc(docRef);
+      return docSnap.data()
+  }
 
 
 export async function  getOnSnapshotCollection(collectionName,id){

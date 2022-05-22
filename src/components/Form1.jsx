@@ -8,7 +8,7 @@ function Form1({id}) {
   const [value, setValue] = useState();
   const [editId, setEditId] = useState(null);
   const [editValue, setEditValue] = useState(false);
-  const [change, setChange] = useState({});
+  const [change, setChange] = useState("");
   const [form, setForm] = useState([]);
   const [ error, setError ] = useState("");
 
@@ -26,6 +26,13 @@ function Form1({id}) {
 
   function HandleEditValue(e){
     e.preventDefault();
+    if (change.length === 0){
+      return setError("El campo es requerido")
+    }
+    console.log("change.length",change.length)
+    if (change.length <= 4){
+      return setError("La pregunta debe tener al menos 5 letras")
+    }
     setValue(change);
     setEditValue(false)
   }
@@ -48,6 +55,7 @@ function Form1({id}) {
 
   
 const getOnSnapshotCollection = async(collectionName, id)=>{
+  console.log("id", id)
         const col = getIdCollection( collectionName , id)
         const unsubscribe = onSnapshotData(col, (doc) => {
           const collection = doc.data();
@@ -82,6 +90,7 @@ const getOnSnapshotCollection = async(collectionName, id)=>{
             onChange={HandlerOnChange}
           />
           <button type="submit">Modificar</button>
+          <div>{error}</div>
           </form>
           :
           <div className="titleEdit">
@@ -89,6 +98,7 @@ const getOnSnapshotCollection = async(collectionName, id)=>{
           <button type="button" onClick={()=>(setEditValue(true))}>Editar</button>
           </div>
           }
+
           <Form 
           id={id}
           value={value}
@@ -99,6 +109,7 @@ const getOnSnapshotCollection = async(collectionName, id)=>{
           setForm={setForm}
           editId={editId}
           setEditId={setEditId}
+          // idformActive={idformActive}
           />
         </>
       ) : (

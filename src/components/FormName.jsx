@@ -2,14 +2,14 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import "./scss/FormName.scss";
 
-import { addDocument, updateDocument } from "../utils/crud"
+import { addDocument, updateDocument, addOneDocument } from "../utils/crud"
 
-function FormName({ setTitleName, id, name }) {
+function FormName({ setTitleName, id, name, SetIdFormActive }) {
   const navigate = useNavigate();
   const [form, setForm] = useState("");
   const [ error, setError ] = useState()
 
-  function HandlerOnSubmit(e) {
+  async function HandlerOnSubmit(e) {
     e.preventDefault();
     if (form.length === 0){
       return setError("Campo requerido")
@@ -19,11 +19,21 @@ function FormName({ setTitleName, id, name }) {
     }
     
     setTitleName(false)
-    ((id==="0")?addDocument('form',{name:form }).then(document=>(navigate(`/home/${document.id}/${document.name}`)))
-    :
-    updateDocument('form', id, {name:form}).then(document=>(navigate(`/home/${id}/${form}`))))
 
-    
+    if(id==="0"){
+      const document = await addDocument('form',{name:form,data:[] })
+      const data = { _id:document.id, name:document.name }
+      await addOneDocument('formActive', document.id, data);
+      // SetIdFormActive(documentActive.id)
+      // navigate(`/home/${document.id}/${documentActive.id}/${document.name}`)
+      navigate(`/home/${document.id}/${document.name}`)
+    }else{
+      updateDocument('form', id, {name:form}).then(document=>(navigate(`/home/${id}/${form}`)))
+    }
+
+    //aqui antes esta de la forma ()?true :false
+    // addDocument('form',{name:form }).then(document=>(navigate(`/home/${document.id}/${document.name}`)))
+    // updateDocument('form', id, {name:form}).then(document=>(navigate(`/home/${id}/${form}`))))
   }
 
   function handlerOnChange(e) {
