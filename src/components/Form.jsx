@@ -33,22 +33,21 @@ function Form({ setValue, value, setQuestion, question,
     }
     if (editId !== null){
       const editchange = question.filter(item=>(item.id!==editId))
-      question1 = {data:[...editchange, { name: value, id:editId, options: [...form] }]}
+      question1 = {data:[...editchange, { name: value, id:editId, options: (freeQuestion?[input]:[...form]) }]}
     } else{
-      question1 = {data:[...question, { name: value, id:randomString(20), options: [...form] }]}
+      question1 = {data:[...question, { name: value, id:randomString(20), options: (freeQuestion?[input]:[...form]) }]}
     } 
-    console.log("question1.data", question1.data)
     setQuestion(question1.data);
     updateDocument('form', id, question1).then(document=>(document));
     let mat = []
     question1.data.map(item=> mat.push({ name: item.name, id: item.id, status:false }))
-    console.log("mat = []", mat,   )
-    console.log("idActive", id)
+    
     updateDocument('formActive', id , {data:[...mat]}).then(document=>(document))
     setValue();
     setForm([]);
     setEditId(null)
   }
+
 
   function HandlerFreeQuestion(){
     setFreeQuestion(true);
@@ -111,7 +110,9 @@ function Form({ setValue, value, setQuestion, question,
       </>
       :
       <>
-      <textarea onChange={HandlerOnChange} ></textarea>
+      <textarea onChange={HandlerOnChange} 
+      name={`TextArea${parseInt(Math.random() * 1000000, 10)}`}
+      placeholder="Ingresa aqui una respuesta comparativa"/>
       <button type="button" onClick={HandlerForm}>Enviar respuesta</button>
       </>
       

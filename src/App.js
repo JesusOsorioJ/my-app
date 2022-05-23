@@ -1,8 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 import Home from './pages/Home';
 import Teacher from './pages/Teacher';
 import Student from './pages/Student';
+import TeacherNotes from './pages/TeacherNotes';
 import { BrowserRouter as Router, Routes, Route}  from 'react-router-dom';
 
 
@@ -15,6 +15,7 @@ function App() {
           <Route path="home/:id/:name" element={<Home />} />
           <Route path="student/:id/:name" element={<Student />} />
           <Route path="teacher/:id/:name" element={<Teacher />} />
+          <Route path="teachernotes/" element={<TeacherNotes />} />
 
         </Routes>
       </Router>

@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 
 import FormName from "../components/FormName";
-import FormQuestion from "../components/FormQuestion";
 import Form1 from "../components/Form1";
 import "./scss/Head.scss" 
 

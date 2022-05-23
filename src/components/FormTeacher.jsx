@@ -71,14 +71,15 @@ function FormTeacher() {
       {check.map(item=>(
         <>
         <div>{item.id}</div>
-        <button type="button" onClick={onClickStatus} value={item.id}>{item.status?"true":"false"}</button>
         <div>{item.name}</div>
+        <button type="button" onClick={onClickStatus} value={item.id}>{item.status?"true":"false"}</button>
         </>
       ))}
       <div>{question.name}</div>
       {question.options?.map(item=>(
         <>
         <div>{item.value}</div>
+        <div>{item.correct&&"true"}</div>
         </>
       ))}
 
