@@ -29,7 +29,7 @@ function Student1(){
 
         return(
             <div>
-          <h1>LISTA DE CURSO DISPONIBLES</h1>
+          <h1>LISTA DE EXAMENES DISPONIBLES</h1>
           <div className="itemFlexTest">
             <span>codigo</span>
             <span>Nombre de Curso</span>
@@ -40,7 +40,7 @@ function Student1(){
               <span>{item.id}</span>
               <span>{item.name}</span>
               <button onClick={() => navigate(`/student/test/${id}/${item.id}`)}>
-                Ir a detalle
+                Ingresar
               </button>
             </div>
           ))}

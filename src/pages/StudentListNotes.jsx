@@ -7,7 +7,7 @@ import StudentListNotes1 from './StudentListNotes1'
 
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import SideMenu1 from "../components/SideMenu";
+import SideMenu1 from "../components/SideMenu1";
 import {  onSnapshotData } from "../utils/crud";
 import "./scss/ListTest.scss";
 
@@ -32,7 +32,7 @@ function StudentListNotes () {
     });
   };
 useEffect(() => {
-  onAuthStateChanged(getAuth(), (user)=>setUser(user))
+  onAuthStateChanged(getAuth(), (user) => (user.photoURL==="student")?setUser(user):navigate('/validate/signup'))
     
   }, []);
 

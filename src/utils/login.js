@@ -26,7 +26,7 @@ export async function createAccount(email, password) {
 
 export async function loginAccount(email, password, name, rol ) {
   const auth = getAuth();
-  try {
+  
     await setPersistence(auth, browserSessionPersistence);
     const userCredential = await signInWithEmailAndPassword(
       auth,
@@ -38,9 +38,7 @@ export async function loginAccount(email, password, name, rol ) {
     }
     const user = userCredential.user;
     console.log("user", user);
-  } catch (error) {
-    console.log("error", error)
-  }
+  
 }
 
 export function logOutAccount(uid){

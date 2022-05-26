@@ -114,7 +114,7 @@ function FormQuestion() {
     getOneCollection("formStudent", `${user}-${id1}`).then(
       (response) => response && setExist(true)
     );
-    onAuthStateChanged(getAuth(), (user)=>user&&setUser(user))
+    onAuthStateChanged(getAuth(), (user)=>user&&setUser(user.email))
     getOneCollection("form", id1).then((response) => setForm(response));
     getOnSnapshotCollection("formActive", id1);
     getOnSnapshotCollection1("formStudent",`${user}-${id1}`);

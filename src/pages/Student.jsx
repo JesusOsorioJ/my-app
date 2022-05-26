@@ -24,13 +24,13 @@ function Student() {
     onSnapshotData(col, (doc) => {
       const collection = doc.data();
       let mat = []
-      collection.data.map(item=>(item.cedula===user.email)&&mat.push(item))
+      collection.data.map(item=>(item.email===user.email)&&mat.push(item))
       setForm(mat[0].course);
   })
    
 }
   useEffect(() => {
-  onAuthStateChanged(getAuth(), (user)=>user&&setUser(user))
+  onAuthStateChanged(getAuth(),(user) => (user.photoURL==="student")?setUser(user):navigate('/validate/signup'))
     
   }, []);
   
@@ -64,7 +64,7 @@ function Student() {
               <span>{item.id}</span>
               <span>{item.name}</span>
               <button onClick={() => navigate(`/student/curse/${item.id}/0`)}>
-                Ir a detalle
+                Examenes
               </button>
             </div>
           ))}

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getAuth,onAuthStateChanged } from "firebase/auth";
 
 import FormName from "./FormName";
@@ -13,10 +13,13 @@ function TestName() {
   const { id, name } = useParams();
   const [titleName, setTitleName] = useState(id === "0");
   const[ user, setUser] = useState("");
+  const navigate = useNavigate();
 
 
   useEffect(() => {
-  onAuthStateChanged(getAuth(), (user)=>setUser(user))
+    console.log("user.photoURL",user.photoURL)
+  onAuthStateChanged(getAuth(),(user) => (user.photoURL==="teacher")?setUser(user): navigate('/validate/signup'))
+ 
     
   }, []);
 
