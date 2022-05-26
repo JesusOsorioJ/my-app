@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Gothic&family=Open+Sans:wght@300;400&display=swap');
+@import '../../App.scss';
+
+.FormRegisterStu{
+    padding:10px 30px;
+
+    .RegisterStuHeadCreate{
+        display: flex;
+        flex-direction: column;
+        margin: 30px auto;
+        padding:40px 50px;
+        border: 1px solid black;
+        border-radius: 20px;
+        width: 350px;
+
+        h2{
+            margin-bottom:30px;
+        }
+        input{
+            margin-bottom:20px;
+            border-radius: 7px;
+            padding:1px 5px;
+            height: 35px;
+            border: 1px solid black;
+        }
+        input,
+    
+        .button_flex {
+          display: flex;
+          justify-content: space-around;
+        }
+        button {
+            max-width: 120px;
+            max-height: 60px;
+            align-self: center;
+            @include link-body;
+            background-color: white;
+            border-radius: 0.5em;
+            border: 3px solid rgb(149, 173, 140);
+            color:  rgb(149, 173, 140);
+            margin-right: 0px;
+            display: inline-block;
+            padding: 0.25em 0.75em;
+            text-decoration: none;
+          }
+          button:hover {
+            background-color:  rgb(149, 173, 140);
+            color: white;
+          }
+    }
+
+  
+  
+    
+    .RegisterStuHeadTitle{
+        @include title;
+        font-size:35px;
+    }
+    .RegisterStuHeadText{
+        font-size:15px;
+        margin: 20px
+    }
+
+    .FormRegisterStuHead{
+        margin: 30px 0px; 
+        display:grid;
+        grid-template-columns: 1fr 4fr;
+
+        .questiontittle1{
+            margin-bottom:10px;
+        }
+
+        .RegisterStuEdit1{
+            .RegisterStuEditRow1{
+                display:grid; 
+                grid-template-columns: 1fr 1fr; 
+            }
+            .RegisterStuEditScroll{
+                margin-top: 10px;
+                margin-right: 10px;
+                height: 70px;
+                overflow-y: scroll;
+            }
+            
+            border:1px solid black;
+            border-radius: 20px;
+            padding: 15px 0px;
+            margin-bottom:50px;
+            
+        }
+
+        .FormRegisterStuForm{
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            margin: 5px 30px;
+
+            .questiontittle{
+                font-size:21px;
+                margin-bottom:10px;
+            }
+
+            input{
+                border-radius:5px;
+                margin-bottom:10px;
+            }
+            button{
+                margin-top: 20px;
+                width: 150px;
+                height:30px;
+                border-radius:5px;
+                align-self: center;
+            }
+        }
+        .RegisterStuEdit{
+            height:400px;
+            border:1px solid black;
+            border-radius: 20px;
+            padding: 15px 0px;
+        }
+        .RegisterStuEditRow{
+            display: grid;
+            div {font-weight: bold;}
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            margin-bottom:10px;
+            button{
+                margin-top: 20px;
+                width: 150px;
+                height:30px;
+                border-radius:5px;
+                align-self: center;
+            }
+        }
+        .RegisterStuEditBox{
+            height:300px;
+            overflow-y: scroll;
+        }
+        .RegisterStuEditRow1{
+            
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            button{
+                width: 100px;
+                height:30px;
+                border-radius:5px;
+                align-self: center;
+            }
+        
+        }
+
+    }
+    
+    
+
+}

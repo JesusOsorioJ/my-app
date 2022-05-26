@@ -34,8 +34,8 @@ export async function updateDocument(collectionName, id, data){
 
 export const onSnapshotData = onSnapshot;
 
-export function getCollection(collectionName, id){
-   return query(collection(db, collectionName), where("name", "==", id));
+export function getCollection(collectionName, email){
+   return query(collection(db, collectionName), where("email", "==", email));
 }
 
 export function getIdCollection(collectionName, id){
@@ -51,6 +51,12 @@ export async function getOneCollection(collectionName, id) {
 
 export async function getOneCollectionForParams(collectionName, params, valueparams) {
     const docRef = query(collection(db, collectionName), where("idForm", "==", valueparams));
+    const docSnap = await getDoc(docRef);
+      return docSnap.data()
+  }
+
+  export async function getOneCollectionForParams1(collectionName, params, valueparams) {
+    const docRef = query(collection(db, collectionName), where(params, "==", valueparams));
     const docSnap = await getDoc(docRef);
       return docSnap.data()
   }

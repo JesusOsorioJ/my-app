@@ -1,0 +1,32 @@
+@import '../../App.scss';
+
+.FormNote{
+    .FormNoteTitle{
+        font-size: 30px;
+    }
+    .FormNoteHead{
+        display:grid;
+        grid-template-columns:  1fr 1fr;
+        margin: 20px 50px;
+        .FormNoteInput{
+            padding: 20px 20px;
+            display:grid;
+        grid-template-columns:  3fr 1fr;
+        justify-items: start;
+
+            border: 1px solid black;
+            div{
+                margin: 5px 0px;
+            }
+            .FormNoteInput1{
+                input, button{
+                    width: 80px;
+                    height: 25px;
+                    text-align: center;
+                    margin-bottom:3px;
+                }
+            } 
+        }
+     }
+    
+}

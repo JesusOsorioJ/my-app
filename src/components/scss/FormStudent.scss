@@ -1,0 +1,74 @@
+@import '../../App.scss';
+
+.FormStudent{
+    .FormStudentMessage{
+        font-size: 35px;
+        margin: 80px auto;
+    }
+    .FormStudentButtonCreate {
+        margin: 40px;
+        align-self: center;
+        width: 300px;
+        height: 90px;
+        @include link-body;
+        font-size: 35px;
+        background-color: white;
+        border-radius: 0.5em;
+        border: 3px solid rgb(149, 173, 140);
+        color:  rgb(149, 173, 140);
+        margin-right: 0px;
+        display: inline-block;
+        padding: 0.25em 0.75em;
+        text-decoration: none;
+      }
+      .FormStudentButtonCreate:hover {
+        background-color:  rgb(149, 173, 140);
+        color: white;
+      }
+    .FormStudentBox{
+        border: 1px solid black;
+        border-radius: 20px;
+        margin: 50px auto;
+        padding: 30px;
+        width: 500px;
+        min-height:200px;
+
+        display:flex;
+        flex-direction: column;
+        form{
+            display:flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        textarea{ margin: 20px }
+
+        .FormStudentBoxRow{
+            display:flex;
+            align-items: center;
+            justify-content: flex-start;
+            input{ margin: 10px;}
+        }
+        button {
+            align-self: center;
+            max-width: 120px;
+            max-height: 60px;
+            @include link-body;
+            background-color: white;
+            border-radius: 0.5em;
+            border: 3px solid rgb(149, 173, 140);
+            color:  rgb(149, 173, 140);
+            margin-right: 0px;
+            display: inline-block;
+            padding: 0.25em 0.75em;
+            text-decoration: none;
+          }
+          button:hover {
+            background-color:  rgb(149, 173, 140);
+            color: white;
+          }
+        
+    }
+        
+    }
+    
+}

@@ -1,16 +1,53 @@
 @import "../../App.scss";
 
 .Form1{
+    display:grid;
+    grid-template-columns: 1fr 2fr;
     .Form1-Container{
+        min-width: 450px;
         border: solid 1px black;
         border-radius: 30px;
         width: 50%;
         margin:auto;
+        margin-left: 20px;
         padding:40px;
-
+        .titleEdit{
+            display:grid;
+            grid-template-columns: 4fr 1fr;
+            button {
+                max-width: 120px;
+                max-height: 40px;
+                background-color: white;
+                border-radius: 0.5em;
+                border: 3px solid rgb(149, 173, 140);
+                color: rgb(149, 173, 140);
+                display: inline-block;
+                padding: 0.11em 0.30em;
+                text-decoration: none;
+              }
+              button:hover {
+                background-color: rgb(149, 173, 140);
+                color: white;
+              }
+        } 
+        
     }
-    .titleEdit{
+    .questionSentMap{
+        margin:20px;
         display:grid;
-        grid-template-columns: 4fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        .questionSentMapItem{
+            display:flex;
+            flex-direction:column;
+            align-items:flex-start;
+            margin:20px;
+            div{
+                margin:4px
+            }
+            button{
+                align-self: center;
+            }
+        }
+  
     }
 }

@@ -81,20 +81,23 @@ function Form({ setValue, value, setQuestion, question,
       {form?.map((option) => (
         <div className="FormOptions">
           <p>{option.value}</p>
+          
+          <button 
+            className={option.correct?
+              "buttonCorrect":"buttonFalse"}
+            type="button"
+            value={option.codigo}
+            onClick={HandlerCorrect}
+          />
           <button
+            className="buttonEliminate"
             type="button"
             value={option.codigo}
             onClick={HandlerEliminate}
           >
-            X
+            x
           </button>
-          <button
-            type="button"
-            value={option.codigo}
-            onClick={HandlerCorrect}
-          >
-            {option.correct?"Quitar":"Poner"}
-          </button>
+          
           
         </div>
       ))}
@@ -103,27 +106,28 @@ function Form({ setValue, value, setQuestion, question,
       {freeQuestion?
       <>
       {!freeQuestion1?
-      <>
-      <h3>Desea añadir una respuesta comparativa</h3>
+      <div className="FormFreeInput">
+      <h3>Desea añadir una respuesta comparativa?</h3>
       <button type="button" onClick={HandlerForm}>Enviar formulario </button>
       <button type="button" onClick={HandlerFreeQuestion1}>Añadir respuesta comparativa </button>
-      </>
+      
+      </div>
       :
-      <>
-      <textarea onChange={HandlerOnChange} 
+      <div className="FormFreeInput">
+      <textarea  cols="40" rows="2" onChange={HandlerOnChange} 
       name={`TextArea${parseInt(Math.random() * 1000000, 10)}`}
       placeholder="Ingresa aqui una respuesta comparativa"/>
       <button type="button" onClick={HandlerForm}>Enviar respuesta</button>
-      </>
+      </div>
       
       }
       </>
      :
      <>
       {(form.length===0)&&
-      (<button type="button" onClick={HandlerFreeQuestion} value="FreeQuestion">Agregar pregunta con Input libre</button>)
+      (<button className="InputFreeButton" type="button" onClick={HandlerFreeQuestion} value="FreeQuestion">Agregar pregunta con Input libre</button>)
       }
-      <form onSubmit={HandlerOnClick}>
+      <form className="FormOptionsInput" onSubmit={HandlerOnClick}>
         <input
           onChange={HandlerOnChange}
           name={parseInt(Math.random() * 1000000, 10)}
@@ -133,7 +137,7 @@ function Form({ setValue, value, setQuestion, question,
         <button type="submit">Agregar</button>
         <div>{error}</div>
       </form>
-      <button type="button" onClick={HandlerForm}>
+      <button className="AddFormButton" type="button" onClick={HandlerForm}>
         Agregar Formulario
       </button>
     </>

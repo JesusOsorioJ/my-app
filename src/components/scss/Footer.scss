@@ -1,16 +1,6 @@
 @import '../../App.scss';
 
-.footer--title {
-    @include text-inline-title;
-    color: $light-blue;
-    margin: 0;
-}
 
-.footer--body {
-    @include text-body;
-    color: $light-blue;
-    margin: 0;
-}
 
 .footer {
     align-items: center;
@@ -19,8 +9,18 @@
     flex-direction: column;
     margin: 0;
     width: 100%;
+    
+  .footer--title {
+    @include text;
+    color: $light-blue;
+    margin: 0;
 }
 
+.footer--body {
+    @include text;
+    color: $light-blue;
+    margin: 0;
+}
 .footer__logo {
     width: 320px;
 }
@@ -61,7 +61,7 @@
 }
 
 .copyright__social-content {
-    @include text-inline-title;
+    @include text;
     text-align: center;
     color: $light-blue;
     margin: 0;
@@ -98,3 +98,5 @@
         gap: 2.5rem;
     }
 }
+}
+

@@ -1,0 +1,35 @@
+@import '../../App.scss';
+
+
+.ListTestFLex1{
+    margin:0px;
+    display:grid;
+    grid-template-columns: 1fr 5fr;
+
+    h1{
+        margin:20px;
+    }
+    .idstudentGrid{
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+
+    }
+    .itemFlexTest{
+        
+        background-color: rgb(220, 213, 213);
+        display:grid;
+        grid-template-columns: 2fr 3fr 1fr;
+        justify-content: space-evenly;    
+        margin:20px 40px ;
+        padding : 0px 20px;
+        
+        button{
+            max-width: 120px;
+            max-height: 40px;
+            border-radius: 0.5em;
+        }
+        button:hover {
+            background-color: rgb(255, 255, 255);
+        }
+    }
+} 

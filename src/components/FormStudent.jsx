@@ -8,19 +8,22 @@ import {
   addOneDocument,
   updateDocument,
 } from "../utils/crud";
-import "./scss/Form1.scss";
+import "./scss/FormStudent.scss";
+import { onAuthStateChanged, getAuth} from "firebase/auth";
 
 function FormQuestion() {
-  const idStudent = "3e23e23e5tt6y665y";
-  const { id } = useParams();
+
+  
+  const { id, id1 } = useParams();
   const [check, setCheck] = useState([]);
   const [form, setForm] = useState([]);
   const [question, setQuestion] = useState([]);
   const [exist, setExist] = useState(false);
   const [error, setError] = useState("");
-  const [optionValue, setOptionValue] = useState();
+  const [optionValue, setOptionValue] = useState({value:""});
   const [message, setMessage] = useState("Formulario cerrado");
   const [ formstudent, setFormstudent] = useState([]);
+  const[ user, setUser] = useState("asas");
 
   const getOnSnapshotCollection = async (collectionName, id) => {
     const col = getIdCollection(collectionName, id);
@@ -30,7 +33,8 @@ function FormQuestion() {
     });
     return unsubscribe;
   };
-
+  
+  
   const getOnSnapshotCollection1 = async (collectionName, id) => {
     const col = getIdCollection(collectionName, id);
     const unsubscribe = onSnapshotData(col, (doc) => {
@@ -41,9 +45,11 @@ function FormQuestion() {
   };
 
   async function HandlerCreateDocument() {
-    await addOneDocument("formStudent", `${id}-${idStudent}`, {
-      name: form.name,
-      id: id,
+    
+    await addOneDocument("formStudent", `${user}-${id1}`, {
+      student: user,
+      idcurse:id,
+      idtest:id1,
       data: [],
     });
     setExist(true);
@@ -56,7 +62,7 @@ function FormQuestion() {
 
   async function HandlerResponse(e) {
     e.preventDefault();
-    
+    if (optionValue.value.length!==0) {
     let cont = 0
     if  (optionValue.name === "TextArea"){
       const valor = question.options[0].value.split(" ")
@@ -80,18 +86,18 @@ function FormQuestion() {
     };
 
     let mat = "";
-    if (optionValue.value) {
+    
       formstudent.map((item) => item.questionid === data.questionid && (mat = "item") )
       ;
       if (mat.length === 0) {
-          updateDocument("formStudent", `${id}-${idStudent}`, {
+          updateDocument("formStudent", `${user}-${id1}`, {
             data: [...formstudent, data],
             }).then((document) => console.log("document", document))
       }
 
       let cal = cont;
       formstudent.map((item) => (cal = cal + item.optioncorrect ))
-      updateDocument("formStudent", `${id}-${idStudent}`, {
+      updateDocument("formStudent", `${user}-${id1}`, {
         cal: cal / check.length,
       });
 
@@ -99,23 +105,26 @@ function FormQuestion() {
       setQuestion();
       setMessage("Formulario recibido espere proxima pregunta");
     } else {
+      console.log("error",error)
       setError("Agrege un valor al cuestionario");
     }
   }
 
 
     useEffect(() => {
-    getOneCollection("formStudent", `${id}-${idStudent}`).then(
+    getOneCollection("formStudent", `${user}-${id1}`).then(
       (response) => response && setExist(true)
     );
-    getOneCollection("form", id).then((response) => setForm(response));
-    getOnSnapshotCollection("formActive", id);
-    getOnSnapshotCollection1("formStudent",`${id}-${idStudent}`);
+    onAuthStateChanged(getAuth(), (user)=>user&&setUser(user))
+    getOneCollection("form", id1).then((response) => setForm(response));
+    getOnSnapshotCollection("formActive", id1);
+    getOnSnapshotCollection1("formStudent",`${user}-${id1}`);
   }, []);
 
   useEffect(() => {
     const value = check.filter((item) => item.status === true)[0];
     const value1 = formstudent.filter(item=> value.id === item.questionid)
+    
     if (value && value1.length === 0 ) {
       const filter = form.data?.filter((item) => item.id === value.id)[0];
       setQuestion(filter);
@@ -125,20 +134,19 @@ function FormQuestion() {
   }, [check]);
 
   return (
-    <div className="FormQuestion">
+    <div className="FormStudent">
       {exist ? (
         <>
-          {exist === true ? "true" : "flase"}
           {question ? (
-            <>
+            <div className="FormStudentBox">
               <div>{question.name}</div>
               {question.options[0].codigo.substring(0, 8) === "TextArea" ? (
                 <form onSubmit={HandlerResponse}>
                   <textarea
                     name="TextArea"
-                    id="te"
-                    cols="30"
-                    rows="10"
+                    id="TextArea"
+                    cols="20"
+                    rows="5"
                     placeholder="Digite respuesta de pregunta"
                     onChange={HandlerOnChange}
                   />
@@ -147,7 +155,7 @@ function FormQuestion() {
               ) : (
                 <form onSubmit={HandlerResponse}>
                   {question.options?.map((item, index) => (
-                    <>
+                    <div className="FormStudentBoxRow">
                       <input
                         type="radio"
                         id={item.codigo}
@@ -156,19 +164,19 @@ function FormQuestion() {
                         value={index}
                       />
                       <label for={item.codigo}>{item.value}</label>
-                    </>
+                    </div>
                   ))}
                   <button type="submit">Enviar</button>
                   <h3>{error}</h3>
                 </form>
               )}
-            </>
+            </div>
           ) : (
-            <div>{message}</div>
+            <div className="FormStudentMessage">{message}</div>
           )}
         </>
       ) : (
-        <button type="button" className="" onClick={HandlerCreateDocument}>
+        <button className="FormStudentButtonCreate" type="button" onClick={HandlerCreateDocument}>
           Comenzar Formulario
         </button>
       )}

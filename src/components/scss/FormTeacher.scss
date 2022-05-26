@@ -1,0 +1,58 @@
+@import '../../App.scss';
+
+.FormQuestion{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    .FormQuestionButton{
+        .FormQuestionButtonHead{
+            width: 80px;
+            margin: 20px 10px;
+            border-radius: 5px;
+            height: 27px;
+        }
+        border: 1px solid black;
+        margin:30px;
+        border-radius: 20px;
+        padding:5px 20px;
+        .FormQuestionButtonRow{
+            display:grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 5px 25px;
+            margin-top:30px;
+            div {font-weight: bold;}
+    
+        
+        }
+        .FormQuestionButtonRow1{
+            display:grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 5px 25px;
+            margin-top:10px;
+            button{
+                width: 80px;
+            }
+        
+        }  
+    }
+    .FormQuestionShow{
+        margin-top:100px;
+        padding:0px 80px;
+        .FormQuestionShowTitle{
+            font-size:30px;
+
+        }
+        .FormQuestionShowTitle{
+            font-size:30px;
+        }
+        .FormQuestionShowRow{
+            display:flex;
+
+            margin:10px 0px;
+            align-self:flex-start;
+            div{margin-right:5px;}
+        }
+        
+    }
+    
+    
+}

@@ -4,7 +4,7 @@ import "./scss/FormName.scss";
 
 import { addDocument, updateDocument, addOneDocument } from "../utils/crud"
 
-function FormName({ setTitleName, id, name, SetIdFormActive }) {
+function FormName({ setTitleName, id, name, user }) {
   const navigate = useNavigate();
   const [form, setForm] = useState("");
   const [ error, setError ] = useState()
@@ -19,21 +19,18 @@ function FormName({ setTitleName, id, name, SetIdFormActive }) {
     }
     
     setTitleName(false)
+    console.log("form user", form, user.email)
 
     if(id==="0"){
-      const document = await addDocument('form',{name:form,data:[] })
-      const data = { _id:document.id, name:document.name }
+      const document = await addDocument('form',{name:form,email:user.email, data:[] })
+      console.log("document", document)
+      updateDocument('form',document.id, {id:document.id})
+      const data = { id:document.id, name:document.name }
       await addOneDocument('formActive', document.id, data);
-      // SetIdFormActive(documentActive.id)
-      // navigate(`/home/${document.id}/${documentActive.id}/${document.name}`)
-      navigate(`/home/${document.id}/${document.name}`)
+      navigate(`/testname/${document.id}/${document.name}`)
     }else{
-      updateDocument('form', id, {name:form}).then(document=>(navigate(`/home/${id}/${form}`)))
+      updateDocument('form', id, {name:form, id:id}).then(document=>(navigate(`/testname/${id}/${form}`)))
     }
-
-    //aqui antes esta de la forma ()?true :false
-    // addDocument('form',{name:form }).then(document=>(navigate(`/home/${document.id}/${document.name}`)))
-    // updateDocument('form', id, {name:form}).then(document=>(navigate(`/home/${id}/${form}`))))
   }
 
   function handlerOnChange(e) {

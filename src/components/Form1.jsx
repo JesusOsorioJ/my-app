@@ -4,6 +4,7 @@ import "./scss/Form1.scss"
 import { getIdCollection, onSnapshotData } from '../utils/crud'
 
 function Form1({id}) {
+  const abcd = "abcdefghi"
   const [question, setQuestion] = useState([]);
   const [value, setValue] = useState();
   const [editId, setEditId] = useState(null);
@@ -55,7 +56,6 @@ function Form1({id}) {
 
   
 const getOnSnapshotCollection = async(collectionName, id)=>{
-  console.log("id", id)
         const col = getIdCollection( collectionName , id)
         const unsubscribe = onSnapshotData(col, (doc) => {
           const collection = doc.data();
@@ -71,15 +71,7 @@ const getOnSnapshotCollection = async(collectionName, id)=>{
 
   return (
     <div className="Form1">
-    {question?.map((item,index)=>(
-      <div>
-      <div>{`Pregunta ${index+1}. ${item.name}`}</div>
-      <button onClick={HandlerEditQuestion} value={item.id}>Editar</button>
-      {item.options.map((option)=>(
-        <div>{option.value}</div>
-      ))}
-      </div>
-    ))}
+    
     <div className="Form1-Container">
       {value ? (
         <>
@@ -114,7 +106,9 @@ const getOnSnapshotCollection = async(collectionName, id)=>{
         </>
       ) : (
         <form className="titleEdit" onSubmit={HandlerOnClick}>
-          <input
+          
+          <textarea
+          cols="40" rows="2"
             placeholder="Ingrese nueva pregunta"
             onChange={HandlerOnChange}
           />
@@ -123,6 +117,17 @@ const getOnSnapshotCollection = async(collectionName, id)=>{
         </form>
       )}
       </div>
+      <div className="questionSentMap">
+      {question?.map((item,index)=>(
+      <div className="questionSentMapItem">
+      <div>{`Pregunta ${index+1}. ${item.name}`}</div>
+      <button onClick={HandlerEditQuestion} value={item.id}>Editar</button>
+      {item.options.map((option,item)=>(
+        <div>{`${abcd[item]}. ${option.value}`}</div>
+      ))}
+      </div>
+    ))}
+    </div>
     </div>
   );
 }

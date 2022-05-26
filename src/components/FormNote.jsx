@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import { getIdCollection, onSnapshotData, getOneCollection, addOneDocument, updateDocument } from '../utils/crud'
-import "./scss/Form1.scss"
+import "./scss/FormNote.scss"
+import { collection, query, where } from "firebase/firestore";
+import { db } from "../utils/firebase";
+
 
 function FormNote({id}) {
   const [form, setForm] = useState([]);
@@ -9,15 +12,18 @@ function FormNote({id}) {
   const [value, setValue] = useState();
   
   const getOnSnapshotCollection = async(collectionName, id)=>{
-    const col = getIdCollection( collectionName , id)
-    const unsubscribe = onSnapshotData(col, (doc) => {
-      const collection = doc.data();
-      setForm(collection)
-      console.log(collection)
+    const col = query(
+      collection(db, collectionName),
+      where("idtest", "==", id)
+    );
+    onSnapshotData(col, (querySnapshot) => {
+      const collection = [];
+      querySnapshot.forEach((doc) => {
+        collection.push(doc.data());
+      });
+      setForm(collection[0]);
     });
-    return unsubscribe
   }
-
 
 
 function HandlerModific(e){
@@ -43,7 +49,7 @@ function HandlerSubmit(e){
 
 
 useEffect(()=>{
-  getOneCollection('form', id).then(response=>setForm(response))
+  // getOneCollection('form', id).then(response=>response&&setForm(response))
   getOnSnapshotCollection('formStudent',id)
 }
 ,[])
@@ -51,33 +57,38 @@ useEffect(()=>{
 
   return (
     <div className="FormNote">
-      <div>{form?.name}</div>
-      <h3>{form?.cal}</h3>
-      {form.data?.map(item=>(
-        <>
-        <div>{item.questionid}</div>
-        <div>{item.questionname}</div>
-        <div>{item.optionname}</div>
-        <div>{item.optioncorrect}</div>
-        <div>{item.optiontext}</div>
+      <div className="FormNoteTitle">{form?.name}</div>
+      <h3>{`Nota final ${form?.cal}`}</h3>
+      <div className="FormNoteHead">
+      {form.data?.map((item, index)=>(
+        <div className="FormNoteInput">
+          <div className="FormNoteInput1">
+        <div>{`${index+1}. ${item.questionname}`}</div>
+        <div>{`${item.optiontext?"Texto":"Opcion"} ${item.optionname}`}</div>
+        </div>
+        <div className="FormNoteInput1">
+        <div>{`cal ${item.optioncorrect}`}</div>
+        
+        
         
         { (optionValue === item.questionid)?
 
         <form onSubmit={HandlerSubmit}>
+          <input type="text" name="" id="" onChange={HandlerOnChange} placeholder="Nota"/>
         <button type="submit">Agregar</button>
-        <input type="text" name="" id="" onChange={HandlerOnChange} />
+        
         </form>
         :
         <button type="button" name={item.questionid} onClick={HandlerModific}>Modificar</button>
         }
-        <br/>
-        <br/>
+        </div>
         {/* que botton se quede quieto cuando se despliegue -------------w-----------------  */}
         {/* Agregar error de editar debe tener. y no , y ser entre 1 y 0 */}
         {/* <input type="radio" id={item.codigo} onClick={HandlerOnChange} name={question.id} />
         <label for={item.codigo} >{item.value}</label> */}
-        </>
+        </div>
       ))}
+      </div>
       
     </div>
   );

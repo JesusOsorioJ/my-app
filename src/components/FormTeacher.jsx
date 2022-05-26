@@ -6,10 +6,11 @@ import {
   getOneCollection,
   updateDocument
 } from "../utils/crud";
-import "./scss/Form1.scss";
+import "./scss/FormTeacher.scss";
 
 function FormTeacher() {
   const { id } = useParams();
+  const abcd = "ABCDEFHI"
   const [ position, setPosition] = useState(-1);
   const [check, setCheck] = useState([]);
   const [form, setForm] = useState([]);
@@ -65,24 +66,37 @@ function FormTeacher() {
 
   return (
     <div className="FormQuestion">
-      <button type="button" onClick={onClickStatus} name={position-1}>Atras</button>
-      <button type="button" onClick={onClickStatus} name={position+1}>siguiente</button>
-    
+      <div className="FormQuestionButton">
+      <button className="FormQuestionButtonHead" type="button" onClick={onClickStatus} name={position-1}>Atras</button>
+      <button className="FormQuestionButtonHead" type="button" onClick={onClickStatus} name={position+1}>siguiente</button>
+      <div>{(form.name!==undefined)&&form.name.toUpperCase()}</div>
+      <div className="FormQuestionButtonRow">
+    <div>SHORT ID</div>
+    <div>PREGUNTA</div>
+    <div>-</div>
+    </div>
       {check.map(item=>(
-        <>
-        <div>{item.id}</div>
+        <div className="FormQuestionButtonRow1">
+        <div>{item.id.slice(0,9)}</div>
         <div>{item.name}</div>
         <button type="button" onClick={onClickStatus} value={item.id}>{item.status?"true":"false"}</button>
-        </>
+        </div>
       ))}
-      <div>{question.name}</div>
-      {question.options?.map(item=>(
-        <>
-        <div>{item.value}</div>
-        <div>{item.correct&&"true"}</div>
-        </>
+      </div>
+      <div className="FormQuestionShow">
+      <div className="FormQuestionShowTitle">
+        {question.name}</div>
+        <div className="FormQuestionShowTitle2">
+        {(question.id!==undefined)&&`cod. ${question.id.slice(0,9)}`}</div> 
+        
+      {question.options?.map((item, index)=>(
+        
+        <div className="FormQuestionShowRow">
+        <div>{`${abcd[index]}. ${item.value}`}</div>
+        <div>{item.correct&&"CORRECTA"}</div>
+        </div>
       ))}
-
+</div>
     </div>
   );
 }

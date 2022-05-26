@@ -7,12 +7,12 @@
   flex-wrap: wrap;
   border-radius: 20px;
   background-color: white;
-  border: solid 1px $blue;
+  border: solid 1px black;
   margin: 50px;
   padding: 30px;
-  .titulo_FormName {@include text-big-title;}
+  .titulo_FormName {@include text}
       .texto_FormName {
-          @include text-body;
+          @include text;
           margin-bottom: 30px;
         }
 
@@ -22,11 +22,12 @@
     margin-left: 80px;
     margin-right: 80px;
     display: block;
-    @include text-body;
+    text-align: center;
+    @include text;
     width: 60%;
-    height: 44px;
+    height: 35px;
     display: flex;
-    border: 1px solid $blue;
+    border: 1px solid black;
     border-radius: 10px;
     margin-bottom: 30px;
     padding: 0.25em 0.5em;
@@ -43,15 +44,15 @@
     @include link-body;
     background-color: white;
     border-radius: 0.5em;
-    border: 3px solid rgb(54, 88, 243);
-    color: rgb(54, 88, 243);
+    border: 3px solid rgb(149, 173, 140);
+    color:  rgb(149, 173, 140);
     margin-right: 0px;
     display: inline-block;
     padding: 0.25em 0.75em;
     text-decoration: none;
   }
   button:hover {
-    background-color: rgb(54, 88, 243);
+    background-color:  rgb(149, 173, 140);
     color: white;
   }
 }

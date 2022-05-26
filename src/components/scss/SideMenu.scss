@@ -1,0 +1,22 @@
+@import "../../App.scss";
+
+.SideMenu{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    min-height:60vh;
+    background-color: grey;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+    .SideMenuBar{
+        display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 140px;
+        margin-top:40px;
+    .SideMenuBarText{
+        margin-bottom:3px;
+    }
+    }
+}

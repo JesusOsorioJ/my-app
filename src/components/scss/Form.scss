@@ -1,27 +1,147 @@
 @import "../../App.scss";
 
-.Form{
-    
-    .FormOptions{
-        display:grid;
-        grid-template-columns: 4fr 1fr;
-        margin:10px;
-        button {
-            max-width: 40px;
-            max-height: 40px;
-            @include link-body;
-            background-color: white;
-            border-radius: 0.5em;
-            border: 3px solid rgb(243, 73, 54);
-            color: rgb(243, 73, 54);
-            margin-right: 0px;
-            display: inline-block;
-            padding: 0.1em 0.1em;
-            text-decoration: none;
-          }
-          button:hover {
-            background-color: rgb(243, 73, 54);
-            color: white;
-          }
+.Form {
+  .FormOptions {
+    display: grid;
+    grid-template-columns: 5fr 1fr 1fr;
+    margin: 20px;
+    .buttonCorrect {
+      max-width: 40px;
+      max-height: 40px;
+      background-color: rgb(145, 229, 90);
+      border-radius: 1.9em;
+      border: 3px solid  rgb(145, 229, 90);
+      margin-right: 10px;
     }
+    .buttonCorrect:hover {
+      background-color: white;
+    }
+
+    .buttonFalse {
+      max-width: 40px;
+      max-height: 40px;
+      background-color: rgb(160, 167, 155);
+      border-radius: 1.9em;
+      border: 3px solid rgb(160, 167, 155);
+      margin-right: 10px;
+    }
+    .buttonFalse:hover {
+      background-color:white;
+    }
+
+    .buttonEliminate {
+      max-width: 40px;
+      max-height: 40px;
+      @include link-body;
+      background-color: white;
+      border-radius:  1.9em;
+      border: 3px solid rgb(243, 73, 54);
+      color: rgb(243, 73, 54);
+      margin-right: 0px;
+      display: inline-block;
+      padding: 0.1em 0.1em;
+      text-decoration: none;
+    }
+    .buttonEliminate:hover {
+      background-color: rgb(243, 73, 54);
+      color: white;
+    }
+  }
+
+  .InputFreeButton {
+    max-width: 200px;
+    max-height: 40px;
+    @include link-body;
+    background-color: white;
+    border-radius: 0.5em;
+    border: 3px solid  rgb(149, 173, 140);;
+    color:  rgb(149, 173, 140);;
+    margin: 20px;
+    display: inline-block;
+    padding: 0.1em 0.1em;
+    text-decoration: none;
+  }
+  .InputFreeButton:hover {
+    background-color:  rgb(149, 173, 140);;
+    color: white;
+  }
+
+  .FormFreeInput {
+    margin: 30px;
+    button {
+      max-width: 200px;
+      max-height: 40px;
+      @include link-body;
+      background-color: white;
+      border-radius: 0.5em;
+      border: 3px solid rgb(149, 173, 140);
+      color: rgb(149, 173, 140);
+      margin: 20px;
+      display: inline-block;
+      padding: 0.1em 0.1em;
+      text-decoration: none;
+    }
+    button:hover {
+      background-color: rgb(149, 173, 140);
+      color: white;
+    }
+  }
+
+  .FormOptionsInput {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    margin-bottom: 30px;
+    button {
+      max-width: 70px;
+      max-height: 40px;
+  
+      @include link-body;
+      background-color: white;
+      border-radius: 0.5em;
+      border: 3px solid rgb(149, 173, 140);
+      color: rgb(149, 173, 140);
+      display: inline-block;
+      padding: 0.1em 0.1em;
+      text-decoration: none;
+    }
+    button:hover {
+      background-color: rgb(149, 173, 140);
+      color: white;
+    }
+
+    input {
+      margin-left:30px;
+      min-width: 300px;
+      @include text;
+      width: 50%;
+      height: 30px;
+      display: flex;
+      border: 1px solid black;
+      border-radius: 10px;
+      
+      padding: 0.25em 0.5em;
+    }
+  }
+ 
+  .AddFormButton{
+      max-width: 140px;
+      max-height: 60px;
+      padding:10px;
+  
+      @include link-body;
+      background-color: white;
+      border-radius: 0.5em;
+      border: 3px solid rgb(149, 173, 140);
+      color: rgb(149, 173, 140);
+      display: inline-block;
+      padding: 0.1em 0.1em;
+      text-decoration: none;
+    }
+    .AddFormButton:hover {
+      background-color: rgb(149, 173, 140);
+      color: white;
+    }
+  
 }
