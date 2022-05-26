@@ -22,12 +22,14 @@ function FormQuestion() {
   const [optionValue, setOptionValue] = useState({value:""});
   const [message, setMessage] = useState("Formulario cerrado");
   const [ formstudent, setFormstudent] = useState([]);
-  const[ user, setUser] = useState("asas");
+  const [titlequestion, setTitlequestion]= useState();
+  const[ user, setUser] = useState();
 
   const getOnSnapshotCollection = async (collectionName, id) => {
     const col = getIdCollection(collectionName, id);
     const unsubscribe = onSnapshotData(col, (doc) => {
       const collection = doc.data();
+      setTitlequestion(collection.name)
       setCheck([...collection.data]);
     });
     return unsubscribe;
@@ -38,20 +40,25 @@ function FormQuestion() {
     const col = getIdCollection(collectionName, id);
     const unsubscribe = onSnapshotData(col, (doc) => {
       const collection = doc.data();
-      setFormstudent([...collection.data]);
+      if (collection){
+        setFormstudent([...collection.data]);
+        setExist(true)
+      }
     });
     return unsubscribe;
   };
 
   async function HandlerCreateDocument() {
-    
+    if (exist === false){
     await addOneDocument("formStudent", `${user}-${id1}`, {
       student: user,
       idcurse:id,
       idtest:id1,
+      nametest:titlequestion,
       data: [],
     });
     setExist(true);
+    }
   }
 
   function HandlerOnChange(e) {
@@ -111,13 +118,21 @@ function FormQuestion() {
 
 
     useEffect(() => {
-    getOneCollection("formStudent", `${user}-${id1}`).then(
-      (response) => response && setExist(true)
-    );
-    onAuthStateChanged(getAuth(), (user)=>user&&setUser(user.email))
+      
+    onAuthStateChanged(getAuth(), (user)=>{
+      setUser(user.email)
+      getOnSnapshotCollection1("formStudent",`${user.email}-${id1}`);
+
+    })
+    
+    
+    // getOneCollection("formStudent", `${user.email}-${id1}`).then(
+    //   (response) => response && 
+    // );
+    
     getOneCollection("form", id1).then((response) => setForm(response));
     getOnSnapshotCollection("formActive", id1);
-    getOnSnapshotCollection1("formStudent",`${user}-${id1}`);
+    
   }, []);
 
   useEffect(() => {

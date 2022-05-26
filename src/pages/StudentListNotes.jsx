@@ -38,7 +38,7 @@ useEffect(() => {
 
   useEffect(() => {
     if (user.length !== 0){
-      getOnSnapshotCollection("formStudent",user);
+      getOnSnapshotCollection("formStudent",user.email);
     }   
     }, [user]);
 
@@ -52,18 +52,18 @@ useEffect(() => {
           <StudentListNotes1 />
           :
           <div>
-          <h1>LISTA DE MIS NOTAS</h1>
+          <h1>LISTA DE MIS EXAMENES</h1>
           <div className="itemFlexTest">
-            <span>Codigo de cuestionario</span>
+            <span>Nombre de cuestionario</span>
             <span>Nota Final</span>
             <span>DETALLE</span>
           </div>
           {form.map((item) => (
             <div className="itemFlexTest">
-              <span>{item.idtest}</span>
+              <span>{item.nametest}</span>
               <span>{item.cal}</span>
               <button onClick={() => navigate(`/studentListnotes/${item.student}-${item.idtest}`)}>
-                Ver respuestas
+                RESPUESTAS
               </button>
             </div>
           ))}

@@ -11,7 +11,6 @@ import {
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { createAccount, loginAccount } from "../utils/login";
 import { onSnapshotData, getIdCollection } from "../utils/crud";
 import "./scss/SignUp.scss";
 
@@ -34,8 +33,6 @@ function SignUp() {
     const col = getIdCollection(collectionName, id);
     onSnapshotData(col, (doc) => {
       const collection = doc.data();
-
-      console.log("collection", collection.data);
       setForm(collection.data);
     });
   };
@@ -44,8 +41,6 @@ function SignUp() {
     const col = getIdCollection(collectionName, id);
     onSnapshotData(col, (doc) => {
       const collection = doc.data();
-
-      console.log("collection1", collection.data);
       setForm1(collection.data);
     });
   };
@@ -102,7 +97,7 @@ function SignUp() {
     if (user.email.length < 1 || user.password.length < 1) {
       return setError("Digite los campos");
     }
-    let roles = "";
+    
     try {
       const auth = getAuth();
       await setPersistence(auth, browserSessionPersistence);

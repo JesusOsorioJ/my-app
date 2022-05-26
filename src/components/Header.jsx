@@ -16,7 +16,7 @@ const navigate = useNavigate();
   return (
     <div className="Header">
       <div className="Headerleft">
-        <li><button className="HeaderleftLiTitle" onClick={()=>(navigate('/'))}>MI APP</button></li>
+        <li><button className="HeaderleftLiTitle" onClick={()=>(user.photoURL==="teacher"?navigate("/testname/0/0"):navigate("/student/0/0/0"))}>MI APP</button></li>
         <li><button onClick={()=>(navigate('/'))}>HOME</button></li>
       </div>
       <div className="HeaderRight">

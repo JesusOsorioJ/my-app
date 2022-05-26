@@ -39,6 +39,7 @@ function Teacher() {
 
   useEffect(() => {
     onAuthStateChanged(getAuth(), (user) => (user.photoURL==="teacher")?setUser(user):navigate('/validate/signup'));
+    // (user) => (user.photoURL==="teacher")?setUser(user): navigate('/validate/signup')
   }, []);
 
   useEffect(() => {

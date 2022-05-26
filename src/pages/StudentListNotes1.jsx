@@ -4,10 +4,8 @@ import { onAuthStateChanged, getAuth} from "firebase/auth";
 import { collection, query, where } from 'firebase/firestore';
 import { db } from '../utils/firebase';
 
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import SideMenu1 from "../components/SideMenu1";
-import { onSnapshotData } from "../utils/crud";
+
+import { onSnapshotData,getIdCollection } from "../utils/crud";
 import "./scss/ListTest.scss";
 
 
@@ -15,22 +13,18 @@ import "./scss/ListTest.scss";
 function StudentListNotes1 () {
   const { idtest } = useParams();
   const[ user, setUser] = useState("asas");
-  const [form, setForm] = useState([]);
+  const [form, setForm] = useState({data:[]});
   const navigate = useNavigate();
 
 
   
   const getOnSnapshotCollection = async (collectionName, idtest) => {
-    const col = query(collection(db, collectionName), where("idtest", "==", idtest));
-    onSnapshotData(col, (querySnapshot) => {
-      const collection = [];
-      querySnapshot.forEach((doc) => {
-        collection.push(doc.data());
-      });
-      console.log("data", collection)
+    const col = getIdCollection(collectionName, idtest);
+    onSnapshotData(col, (doc) => {
+      const collection = doc.data();
       setForm(collection);
-      
     });
+    
   };
 useEffect(() => {
   onAuthStateChanged(getAuth(),  (user) => (user.photoURL==="student")?setUser(user):navigate('/validate/signup'))
@@ -38,36 +32,25 @@ useEffect(() => {
   }, []);
 
   useEffect(() => {
-    if (user.length !== 0){
       getOnSnapshotCollection("formStudent",idtest);
-    }   
     }, [user]);
 
   return (
-    <div className="ListTest">
-      <Header />
-      <div className="ListTestFLex">
-        <SideMenu1 />
         <div>
-          <h1>LISTA DE MIS NOTAS</h1>
+          <h1>{`${form.nametest}`}</h1>
           <div className="itemFlexTest">
-            <span>Codigo de cuestionario</span>
-            <span>Nota Final</span>
-            <span>DETALLE</span>
+            <span>PREGUNTA</span>
+            <span>RESPUESTA</span>
+            <span>NOTA</span>
           </div>
-          {form.map((item) => (
+          {form?.data.map((item) => (
             <div className="itemFlexTest">
-              <span>{item.idtest}</span>
-              <span>{item.cal}</span>
-              <button onClick={() => navigate(`/studentListnotes/${item.student}-${item.idtest}`)}>
-                Ver respuestas
-              </button>
+              <span>{item.questionname}</span>
+              <span>{item.optionname}</span>
+              <span>{item.optioncorrect}</span>
             </div>
           ))}
         </div>
-      </div>
-      <Footer />
-    </div>
   );
 }
 export default StudentListNotes1;

@@ -17,10 +17,7 @@ function TestName() {
 
 
   useEffect(() => {
-    console.log("user.photoURL",user.photoURL)
   onAuthStateChanged(getAuth(),(user) => (user.photoURL==="teacher")?setUser(user): navigate('/validate/signup'))
- 
-    
   }, []);
 
 
