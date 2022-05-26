@@ -14,7 +14,7 @@ import "./scss/ListTest.scss";
 
 function Student() {
   const { type, id  } = useParams();
-  const[ user, setUser] = useState({email:"asas"});
+  const[ user, setUser] = useState({email:""});
   const [form, setForm] = useState([]);
   const navigate = useNavigate();
 
@@ -30,8 +30,9 @@ function Student() {
    
 }
   useEffect(() => {
-  onAuthStateChanged(getAuth(),(user) => (user.photoURL==="student")?setUser(user):navigate('/validate/signup'))
-    
+  onAuthStateChanged(getAuth(),(user) => (user?.photoURL==="student")?setUser(user):navigate('/validate/signup'))
+
+  
   }, []);
   
   useEffect(() => {

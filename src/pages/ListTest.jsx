@@ -27,7 +27,7 @@ function ListTest() {
     });
   };
 useEffect(() => {
-  onAuthStateChanged(getAuth(), (user) => (user.photoURL==="teacher")?setUser(user):navigate('/validate/signup'))
+  onAuthStateChanged(getAuth(), (user) => (user?.photoURL==="teacher")?setUser(user):navigate('/validate/signup'))
     
   }, []);
 

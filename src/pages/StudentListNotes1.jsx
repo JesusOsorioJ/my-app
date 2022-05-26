@@ -27,7 +27,7 @@ function StudentListNotes1 () {
     
   };
 useEffect(() => {
-  onAuthStateChanged(getAuth(),  (user) => (user.photoURL==="student")?setUser(user):navigate('/validate/signup'))
+  onAuthStateChanged(getAuth(),  (user) => (user?.photoURL==="student")?setUser(user):navigate('/validate/signup'))
     
   }, []);
 
