@@ -11,13 +11,11 @@ import TeacherNotesStudent from "./TeacherNotes1/TeacherNotesStudent";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SideMenu from "../components/SideMenu";
-import { getAllCollection, onSnapshotData, getCollection } from "../utils/crud";
+import {  onSnapshotData  } from "../utils/crud";
 import "./scss/TeacherNotes.scss";
 
 function Teacher() {
   const { type, filter } = useParams();
-
-  // const id = "CfAgqIA4xVjszP2xUX1P-3e23e23e5tt6y665y"
 
   const [data, setData] = useState([]);
   const [user, setUser] = useState("");
@@ -40,7 +38,7 @@ function Teacher() {
   };
 
   useEffect(() => {
-    onAuthStateChanged(getAuth(), (user) => user&&setUser(user));
+    onAuthStateChanged(getAuth(), (user) => user?setUser(user):navigate('/validate/signup'));
   }, []);
 
   useEffect(() => {

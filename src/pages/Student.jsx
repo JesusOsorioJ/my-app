@@ -9,7 +9,7 @@ import { onAuthStateChanged, getAuth} from "firebase/auth";
 import Student1 from "./Student1"
 
 
-import { getCollection, onSnapshotData, getIdCollection } from "../utils/crud";
+import { onSnapshotData, getIdCollection } from "../utils/crud";
 import "./scss/ListTest.scss";
 
 function Student() {
@@ -35,9 +35,7 @@ function Student() {
   }, []);
   
   useEffect(() => {
-    // if (user.length !== 0){
       getOnSnapshotCollection("formRegister","allstudents");
-    // }   
     }, [user]);
 
     return(

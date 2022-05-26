@@ -18,7 +18,6 @@ function Teacher(){
 
     const getOnSnapshotCollection = async (collectionName, email) => {
         const col = getCollection(collectionName, email);
-        console.log("email", email)
         onSnapshotData(col, (querySnapshot) => {
           const collection = [];
           querySnapshot.forEach((doc) => {
@@ -40,10 +39,6 @@ function Teacher(){
           getOnSnapshotCollection("form",user.email);
         }   
         }, [user]);
-    
-   
-
-
     
  return(
      <div className="ListTest">

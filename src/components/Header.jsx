@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getAuth,onAuthStateChanged } from "firebase/auth";
 import './scss/Header.scss';
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {logOutAccount} from "../utils/login"
 
 function Header() {
@@ -36,8 +36,7 @@ const navigate = useNavigate();
             
       </div>
 
-        {/* <button type="button" onClick={()=>(navigate('/validate/signup'))}>Registrarse</button>
-        <button type="button" onClick={()=>(navigate('/validate/login'))}>Iniciar Sesión</button> */}
+    
     </div>
 
   );

@@ -7,7 +7,7 @@ import { db } from '../utils/firebase';
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import SideMenu1 from "../components/SideMenu";
-import { getCollection, onSnapshotData } from "../utils/crud";
+import { onSnapshotData } from "../utils/crud";
 import "./scss/ListTest.scss";
 
 

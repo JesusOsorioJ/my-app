@@ -1,4 +1,3 @@
-import Form from "../components/Form";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import {
@@ -185,32 +184,3 @@ function FormQuestion() {
 }
 export default FormQuestion;
 
-//que el profe pueda modificar el value crear el value hecha
-// que se pueda input libre y comparar con input libre hecha
-// por los de pregunta con tiempo mañana o proxima version
-// que al recargar no apesca la pregunta mandada hecho
-
-// if (optionValue.value) {
-//   await getOneCollection("formStudent", `${id}-${idStudent}`).then(
-//     (response) =>
-//       response.data.map(
-//         (item) => item.questionid === data.questionid && (mat = "item")
-//       )
-//   );
-
-//   if (mat.length === 0) {
-//     await getOneCollection("formStudent", `${id}-${idStudent}`).then(
-//       (response) =>
-//         updateDocument("formStudent", `${id}-${idStudent}`, {
-//           data: [...response.data, data],
-//         }).then((document) => console.log("document", document))
-//     );
-//   }
-
-//   let cal = 0;
-//   await getOneCollection("formStudent", `${id}-${idStudent}`).then(
-//     (response) =>
-//       response.data.map(
-//         (item) => (cal = cal + item.optioncorrect )
-//       )
-//   );

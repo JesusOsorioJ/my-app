@@ -49,7 +49,6 @@ function HandlerSubmit(e){
 
 
 useEffect(()=>{
-  // getOneCollection('form', id).then(response=>response&&setForm(response))
   getOnSnapshotCollection('formStudent',id)
 }
 ,[])

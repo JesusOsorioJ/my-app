@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth,onAuthStateChanged } from "firebase/auth";
 
-import { getAllCollection,onSnapshotData, getCollection } from "../../utils/crud";
+import { onSnapshotData, getCollection } from "../../utils/crud";
 import "../scss/ListTest.scss";
 
 function TeacherNotesTest() {

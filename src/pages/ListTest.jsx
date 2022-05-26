@@ -5,7 +5,7 @@ import { getAuth,onAuthStateChanged } from "firebase/auth";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SideMenu from "../components/SideMenu";
-import { getAllCollection,onSnapshotData, getCollection } from "../utils/crud";
+import { onSnapshotData, getCollection } from "../utils/crud";
 import "./scss/ListTest.scss";
 function ListTest() {
 

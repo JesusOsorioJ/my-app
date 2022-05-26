@@ -16,9 +16,6 @@ function TeacherCurse() {
   const [form, setForm] = useState([]);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   getAllCollection("formRegister").then((response) => setForm(response));
-  // }, []);
   
   const getOnSnapshotCollection = async (collectionName, email) => {
     const col = getCollection(collectionName, email);

@@ -10,7 +10,6 @@ import SideMenu from "./SideMenu";
 import "./scss/TestName.scss";
 
 function TestName() {
-  // const [idformActive, SetIdFormActive] = useState();
   const { id, name } = useParams();
   const [titleName, setTitleName] = useState(id === "0");
   const[ user, setUser] = useState("");
@@ -38,7 +37,6 @@ function TestName() {
                 Cambiar
               </button>
             </div>
-            {/* <Form1 id={id} idformActive={idformActive} /> */}
             <Form1 id={id} />
           </>
         )}

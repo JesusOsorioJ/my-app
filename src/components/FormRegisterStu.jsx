@@ -65,6 +65,7 @@ function FormRegisterStu({email}) {
       form:[]
     });
     navigate(`/teachercurse/${name}`);
+    setError()
   }
 
   function HandlerOnChange(e) {
@@ -138,10 +139,8 @@ function FormRegisterStu({email}) {
   }
 
   useEffect(() => {
-    if ( id !== "1") {
       getOnSnapshotCollection("formRegister", id);
       getOnSnapshotCollection1("formRegister", "allstudents");
-    }
   }, []);
 
   return (
@@ -164,7 +163,7 @@ function FormRegisterStu({email}) {
           <div className="questiontittle1">EXAMENES DEL CURSO</div>
           <div className="RegisterStuEdit1">
           <div className="RegisterStuEditRow1">
-              <div>SHOT ID</div>
+              <div>SHORT ID</div>
               <div>NOMBRE</div>
           </div>
           <div className="RegisterStuEditScroll">
@@ -232,12 +231,6 @@ function FormRegisterStu({email}) {
           </div>
           </div>
           </div>
-          {/* <form onSubmit={HandlerCreateDocument}>
-            <div>{error}</div>
-          <input type="text" name="" id="" onChange={HandlerOnChange} />
-          <button type="submit">Agregar</button>
-          <div>{error}</div>
-        </form> */}
         </div>
         </>
       )}

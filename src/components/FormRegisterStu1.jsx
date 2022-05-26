@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getAuth,onAuthStateChanged } from "firebase/auth";
 
-import { getAllCollection,
-  onSnapshotData,
+import { onSnapshotData,
   getIdCollection,
    getCollection, 
    updateDocument } from "../utils/crud";

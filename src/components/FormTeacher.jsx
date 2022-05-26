@@ -60,9 +60,6 @@ function FormTeacher() {
     }
     ,[idForm])
 
-  // cuando cree el intento se guarda hora de creacion de intento y esto se resta con la hora actual ===> tiempo total q
-  // para tiempo por pregunta seria hacer handlerclick cunado se pase el tiempo
-  // para que el prfesor presione y cierre pregunta
 
   return (
     <div className="FormQuestion">

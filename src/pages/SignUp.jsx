@@ -71,12 +71,16 @@ function SignUp(){
 
    function HandlerLogin(e){
     e.preventDefault();
-    console.log("login")
     if (user.email.length<1 || user.password.length<1){
         return setError("Digite los campos")
     }
     loginAccount(user.email,user.password, user.name,user.rol);
-    navigation('/')
+    if (user.rol === "student") {
+        navigation('/student/0/0/0')
+    }else{
+        navigation('testname/:id/:name')
+    }
+    
 }
    
     function HandlerOnChange(e){

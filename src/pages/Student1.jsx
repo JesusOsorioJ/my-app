@@ -1,11 +1,6 @@
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import FormStudent from "../components/FormStudent";
-import SideMenu1 from "../components/SideMenu1";
+
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { onAuthStateChanged, getAuth} from "firebase/auth";
-
 
 import { onSnapshotData, getIdCollection } from "../utils/crud";
 import "./scss/ListTest.scss";
@@ -14,7 +9,7 @@ import "./scss/ListTest.scss";
 function Student1(){
 
     const [form, setForm] = useState([]);
-    const { id, id1  } = useParams();
+    const { id } = useParams();
     const navigate = useNavigate();
 
     const getOnSnapshotCollection = async (collectionName, id) => {

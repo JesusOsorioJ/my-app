@@ -1,5 +1,5 @@
 import './App.css';
-import Home from './pages/Home';
+// import Home from './pages/Home';
 import Teacher from './pages/Teacher';
 import Student from './pages/Student';
 import TeacherNotes from './pages/TeacherNotes';
@@ -17,7 +17,7 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<SignUp />} />
           {/* dieccion con imagen con foto */}
           <Route path="listtest/" element={<ListTest />} />
           {/* para ver lista de todos los lest hechos */}

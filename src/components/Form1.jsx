@@ -101,7 +101,7 @@ const getOnSnapshotCollection = async(collectionName, id)=>{
           setForm={setForm}
           editId={editId}
           setEditId={setEditId}
-          // idformActive={idformActive}
+          
           />
         </>
       ) : (

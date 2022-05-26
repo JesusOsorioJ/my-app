@@ -8,7 +8,7 @@ import StudentListNotes1 from './StudentListNotes1'
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import SideMenu1 from "../components/SideMenu";
-import { getCollection, onSnapshotData } from "../utils/crud";
+import {  onSnapshotData } from "../utils/crud";
 import "./scss/ListTest.scss";
 
 
@@ -19,12 +19,8 @@ function StudentListNotes () {
   const [form, setForm] = useState([]);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   getAllCollection("formRegister").then((response) => setForm(response));
-  // }, []);
-  
   const getOnSnapshotCollection = async (collectionName, email) => {
-    const col = query(collection(db, collectionName), where("emil", "==", email));
+    const col = query(collection(db, collectionName), where("student", "==", email));
     onSnapshotData(col, (querySnapshot) => {
       const collection = [];
       querySnapshot.forEach((doc) => {
