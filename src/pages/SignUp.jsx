@@ -59,7 +59,7 @@ function SignUp(){
             return setError("Lo sentimos no se encontro estudiante en base de datos")
         }
         if (mat1.length === 0 && user.rol === "teacher" ){
-            return setError("Lo sentimos el codigo de pago en base de datos")
+            return setError("Lo sentimos no encontramos tu codigo de pago")
         }
 
         createAccount(user.email,user.password)
